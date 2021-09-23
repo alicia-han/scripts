@@ -9,9 +9,9 @@
 #######################
 
 function getLogs() {
-  gcloud  logging read 'resource.type="cloud_run_revision"
+  gcloud --project ornikar-fr-prod-websites logging read 'resource.type="cloud_run_revision"
 log_name="projects/ornikar-fr-prod-websites/logs/run.googleapis.com%2Frequests" 
-resource.labels.service_name="fr-prod-website"' --limit 10 --format "csv(httpRequest.latency,httpRequest.protocol,httpRequest.referer,httpRequest.remoteIp,httpRequest.requestMethod,timestamp,trace)"
+resource.labels.service_name="fr-prod-website"' --limit 10 --format "csv(httpRequest.remoteIp,httpRequest.userAgent,httpRequest.requestUrl,timestamp,httpRequest.status)"
 }
 
 
